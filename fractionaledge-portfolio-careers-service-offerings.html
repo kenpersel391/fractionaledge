@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FractionalEdge & Portfolio Careers Service Offerings</title>
+    <style>
+        :root {
+            --black: #000000;
+            --dark-gray: #1a1a1a;
+            --medium-gray: #333333;
+            --light-gray: #666666;
+            --lighter-gray: #f5f5f5;
+            --white: #ffffff;
+            --accent: #2d2d2d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background: var(--white);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--black);
+            color: var(--white);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #888;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #888;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--black);
+            color: var(--white);
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: #888;
+            margin-bottom: 2rem;
+        }
+
+        .hero-tagline {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            color: #aaa;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .btn-primary:hover {
+            background: #ddd;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section.dark {
+            background: var(--black);
+            color: var(--white);
+            max-width: 100%;
+            padding-left: calc((100% - 1200px) / 2 + 2rem);
+            padding-right: calc((100% - 1200px) / 2 + 2rem);
+        }
+
+        section.light {
+            background: var(--lighter-gray);
+            max-width: 100%;
+            padding-left: calc((100% - 1200px) / 2 + 2rem);
+            padding-right: calc((100% - 1200px) / 2 + 2rem);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .section-intro {
+            font-size: 1.2rem;
+            color: var(--light-gray);
+            max-width: 800px;
+            margin-bottom: 3rem;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 2rem;
+            border: 1px solid #eee;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .card.dark {
+            background: var(--dark-gray);
+            color: var(--white);
+            border-color: #333;
+        }
+
+        .card-number {
+            font-size: 3rem;
+            font-weight: 200;
+            color: #ddd;
+            margin-bottom: 1rem;
+        }
+
+        .card.dark .card-number {
+            color: #444;
+        }
+
+        /* Pricing Tables */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border: 1px solid #eee;
+            padding: 2.5rem;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--black);
+            transform: scale(1.02);
+        }
+
+        .pricing-card.featured::before {
+            content: "Most Popular";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--black);
+            color: var(--white);
+            padding: 0.3rem 1rem;
+            font-size: 0.8rem;
+        }
+
+        .pricing-card.dark {
+            background: var(--black);
+            color: var(--white);
+            border-color: #333;
+        }
+
+        .pricing-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-price {
+            font-size: 3rem;
+            font-weight: 300;
+            margin: 1rem 0;
+        }
+
+        .pricing-period {
+            font-size: 1rem;
+            color: var(--light-gray);
+        }
+
+        .pricing-card.dark .pricing-period {
+            color: #888;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .pricing-features li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .pricing-card.dark .pricing-features li {
+            border-color: #333;
+        }
+
+        .pricing-features li::before {
+            content: "✓";
+            margin-right: 0.5rem;
+            font-weight: bold;
+        }
+
+        /* Service Tiers */
+        .tier-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .tier {
+            background: var(--white);
+            border: 1px solid #eee;
+            overflow: hidden;
+        }
+
+        .tier-header {
+            background: var(--black);
+            color: var(--white);
+            padding: 1.5rem 2rem;
+        }
+
+        .tier-header h3 {
+            margin-bottom: 0.3rem;
+        }
+
+        .tier-body {
+            padding: 2rem;
+        }
+
+        .tier-body ul {
+            list-style: none;
+        }
+
+        .tier-body li {
+            padding: 0.7rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .tier-body li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--light-gray);
+        }
+
+        /* Framework Diagram */
+        .framework {
+            background: var(--lighter-gray);
+            padding: 3rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        .framework-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            padding: 2rem 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .framework-step:last-child {
+            border-bottom: none;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--black);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-content p {
+            color: var(--light-gray);
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            background: var(--white);
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comparison-table th {
+            background: var(--black);
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        .comparison-table tr:hover {
+            background: var(--lighter-gray);
+        }
+
+        /* Process Flow */
+        .process-flow {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .process-step {
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--white);
+            border: 1px solid #eee;
+        }
+
+        .process-step .step-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--black);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Deliverables */
+        .deliverables-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .deliverable {
+            background: var(--white);
+            padding: 1.5rem;
+            border-left: 3px solid var(--black);
+        }
+
+        .deliverable h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        .deliverable p {
+            color: var(--light-gray);
+            font-size: 0.95rem;
+        }
+
+        /* Testimonials */
+        .testimonial {
+            background: var(--white);
+            padding: 2rem;
+            border: 1px solid #eee;
+            margin-top: 2rem;
+        }
+
+        .testimonial blockquote {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: var(--medium-gray);
+        }
+
+        .testimonial cite {
+            color: var(--light-gray);
+            font-style: normal;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            color: #888;
+            margin-top: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .process-flow {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">Fractional<span>Edge</span></div>
+        <ul>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#fractionaledge">FractionalEdge</a></li>
+            <li><a href="#portfolio">Portfolio Careers</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <h1>Transform Your Expertise Into A Business</h1>
+        <p class="subtitle">Two powerful service lines for accomplished professionals</p>
+        <p class="hero-tagline">
+            Help your clients monetize decades of experience through fractional executive services
+            or build sustainable portfolio careers. We've codified the playbooks, frameworks,
+            and systems you need to deliver exceptional results.
+        </p>
+        <div class="hero-buttons">
+            <a href="#fractionaledge" class="btn btn-primary">Explore FractionalEdge</a>
+            <a href="#portfolio" class="btn btn-secondary">Discover Portfolio Careers</a>
+        </div>
+    </section>
+
+    <section id="overview">
+        <h2>Two Distinct Service Lines, One Unified Mission</h2>
+        <p class="section-intro">
+            Many of your clients possess extraordinary expertise but lack the roadmap to convert
+            that expertise into sustainable income. We provide two complementary approaches
+            designed for different client needs and market opportunities.
+        </p>
+
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-number">01</div>
+                <h3>FractionalEdge</h3>
+                <p>
+                    Position your clients as part-time C-suite executives serving multiple companies.
+                    Ideal for senior leaders with deep functional expertise in finance, marketing,
+                    operations, technology, or sales.
+                </p>
+            </div>
+            <div class="card">
+                <div class="card-number">02</div>
+                <h3>Portfolio Careers</h3>
+                <p>
+                    Guide clients in building multi-stream income businesses that combine consulting,
+                    content creation, teaching, and advisory work. Perfect for versatile professionals
+                    seeking diversity and scalability.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="dark" id="fractionaledge">
+        <h2 style="color: white;">FractionalEdge</h2>
+        <p class="section-intro" style="color: #888;">
+            A comprehensive service line for helping experienced executives launch and scale
+            profitable fractional practices. Market research shows fractional executives typically
+            earn $120K-$360K annually serving 2-3 clients with 10-15 hours monthly per engagement.
+        </p>
+
+        <h3 style="color: white; margin-top: 3rem;">Service Tier 1: Foundation</h3>
+        <p style="color: #888; margin-bottom: 1.5rem;">For executives just beginning their fractional journey</p>
+
+        <div class="tier-list">
+            <div class="tier">
+                <div class="tier-header">
+                    <h3>Launch Pad</h3>
+                    <p style="color: #888; font-size: 0.9rem;">8-Week Program</p>
+                </div>
+                <div class="tier-body">
+                    <ul>
+                        <li>Personal positioning workshop</li>
+                        <li>Niche selection and validation</li>
+                        <li>Service package development</li>
+                        <li>Pricing strategy and benchmarks</li>
+                        <li>Website and online presence setup</li>
+                        <li>LinkedIn profile optimization</li>
+                        <li>Initial outreach campaign template</li>
+                        <li>First 3 client acquisition strategy</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tier">
+                <div class="tier-header">
+                    <h3>Foundation Retainer</h3>
+                    <p style="color: #888; font-size: 0.9rem;">Ongoing Partnership</p>
+                </div>
+                <div class="tier-body">
+                    <ul>
+                        <li>Weekly office hours with coach</li>
+                        <li>Pipeline review and strategy</li>
+                        <li>Proposal and pricing review</li>
+                        <li>Client negotiation support</li>
+                        <li>Contract template library</li>
+                        <li>Access to fractional executive community</li>
+                        <li>Monthly group mastermind session</li>
+                        <li>Resource and tool recommendations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h3 style="color: white; margin-top: 4rem;">Service Tier 2: Growth</h3>
+        <p style="color: #888; margin-bottom: 1.5rem;">For established fractional executives ready to scale</p>
+
+        <div class="tier-list">
+            <div class="tier">
+                <div class="tier-header">
+                    <h3>Scale Up</h3>
+                    <p style="color: #888; font-size: 0.9rem;">12-Week Intensive</p>
+                </div>
+                <div class="tier-body">
+                    <ul>
+                        <li>Multi-client portfolio optimization</li>
+                        <li>Premium positioning strategy</li>
+                        <li>Thought leadership content system</li>
+                        <li>Speaking and visibility strategy</li>
+                        <li>Partnership and referral development</li>
+                        <li>Operational efficiency audit</li>
+                        <li>Revenue optimization roadmap</li>
+                        <li>Exit and transition planning</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tier">
+                <div class="tier-header">
+                    <h3>Fractional Plus</h3>
+                    <p style="color: #888; font-size: 0.9rem;">Enterprise Partnership</p>
+                </div>
+                <div class="tier-body">
+                    <ul>
+                        <li>Dedicated fractional executive recruiter</li>
+                        <li>Client matching and introduction service</li>
+                        <li>Contract negotiation on your behalf</li>
+                        <li>Ongoing compliance and legal support</li>
+                        <li>VIP access to fractional executive events</li>
+                        <li>Coaching for your fractional team</li>
+                        <li>White-label service delivery playbooks</li>
+                        <li>Revenue share on referred clients</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h3 style="color: white; margin-top: 4rem;">Core Deliverables</h3>
+        <div class="deliverables-grid">
+            <div class="deliverable">
+                <h4>Positioning Framework</h4>
+                <p>Clear articulation of your unique value proposition, target market, and service scope</p>
+            </div>
+            <div class="deliverable">
+                <h4>Service Package Playbook</h4>
+                <p>Pre-built engagement templates for common fractional roles (CFO, CMO, COO, CTO, CRO)</p>
+            </div>
+            <div class="deliverable">
+                <h4>Pricing Calculator</h4>
+                <p>Data-driven pricing recommendations based on role, experience, and market benchmarks</p>
+            </div>
+            <div class="deliverable">
+                <h4>Client Acquisition System</h4>
+                <p>Proven outreach sequences, referral strategies, and networking frameworks</p>
+            </div>
+            <div class="deliverable">
+                <h4>Engagement Contract Templates</h4>
+                <p>Professional services agreements, NDAs, and scope change documentation</p>
+            </div>
+            <div class="deliverable">
+                <h4>Delivery Playbook</h4>
+                <p>Standard operating procedures for onboarding, executing, and exiting fractional engagements</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <h2>Portfolio Careers</h2>
+        <p class="section-intro">
+            A comprehensive program for helping versatile professionals build multi-stream businesses
+            that provide income diversity, flexibility, and scalability. Research shows the most
+            successful portfolio careerists combine client work with digital products and content.
+        </p>
+
+        <h3 style="margin-top: 3rem;">Three Business Models</h3>
+        <div class="cards-grid">
+            <div class="card">
+                <h3>The Consultant Model</h3>
+                <p>
+                    <strong>Fastest path to revenue.</strong> Monetize existing skills through
+                    freelance projects, fractional roles, or advisory positions. Low risk,
+                    quick cash flow, but income tied directly to time invested.
+                </p>
+                <ul style="margin-top: 1rem; padding-left: 1.2rem; color: var(--light-gray);">
+                    <li>Hourly or retainer-based client work</li>
+                    <li>Project-based consulting engagements</li>
+                    <li>Fractional executive roles</li>
+                    <li>Corporate training and workshops</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>The Creator Model</h3>
+                <p>
+                    <strong>Scale your impact and income.</strong> Convert expertise into
+                    digital products that sell repeatedly. Higher upfront effort, slower
+                    initial revenue, but creates lasting passive income streams.
+                </p>
+                <ul style="margin-top: 1rem; padding-left: 1.2rem; color: var(--light-gray);">
+                    <li>Online courses and training programs</li>
+                    <li>Membership communities and newsletters</li>
+                    <li>Books, ebooks, and publications</li>
+                    <li>Podcasts and video content</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>The Hybrid Model</h3>
+                <p>
+                    <strong>Best of both worlds.</strong> Combine consulting for stable cash
+                    flow with creator products for scale and freedom. Most sustainable
+                    long-term approach, but requires careful time management.
+                </p>
+                <ul style="margin-top: 1rem; padding-left: 1.2rem; color: var(--light-gray);">
+                    <li>80/20 consulting to product ratio</li>
+                    <li>Consulting fuels product development</li>
+                    <li>Products fund creative freedom</li>
+                    <li>Gradual shift toward products over time</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3 style="margin-top: 4rem;">Portfolio Career Pathways</h3>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3 class="pricing-title">Pathway 1</h3>
+                <p class="pricing-title">Consultant Accelerator</p>
+                <p class="pricing-price">$4,997</p>
+                <p class="pricing-period">One-time program fee</p>
+                <ul class="pricing-features">
+                    <li>Skills audit and monetization map</li>
+                    <li>Service package development</li>
+                    <li>Portfolio and case study creation</li>
+                    <li>Proposal and contract templates</li>
+                    <li>Pricing strategy and negotiation training</li>
+                    <li>Client acquisition playbook</li>
+                    <li>30-day implementation sprint</li>
+                </ul>
+            </div>
+
+            <div class="pricing-card featured">
+                <h3 class="pricing-title">Pathway 2</h3>
+                <p class="pricing-title">Product Studio</p>
+                <p class="pricing-price">$7,997</p>
+                <p class="pricing-period">One-time program fee</p>
+                <ul class="pricing-features">
+                    <li>Expertise extraction framework</li>
+                    <li>Product opportunity identification</li>
+                    <li>Course or product blueprint</li>
+                    <li>Content development system</li>
+                    <li>Platform selection and setup</li>
+                    <li>Launch strategy and timeline</li>
+                    <li>Marketing and sales playbook</li>
+                    <li>6 months of monthly check-ins</li>
+                </ul>
+            </div>
+
+            <div class="pricing-card">
+                <h3 class="pricing-title">Pathway 3</h3>
+                <p class="pricing-title">Portfolio Mastery</p>
+                <p class="pricing-price">$12,997</p>
+                <p class="pricing-period">One-time program fee</p>
+                <ul class="pricing-features">
+                    <li>Complete business model design</li>
+                    <li>Multi-stream income architecture</li>
+                    <li>Both consulting and product playbooks</li>
+                    <li>Personal brand development</li>
+                    <li>Content marketing system</li>
+                    <li>Community building strategy</li>
+                    <li>12 months of ongoing support</li>
+                    <li>Private mastermind access</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3 style="margin-top: 4rem;">Portfolio Career Framework</h3>
+        <div class="framework">
+            <div class="framework-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h4>Discovery & Assessment</h4>
+                    <p>Comprehensive audit of skills, experience, passions, and market opportunities. Identify the optimal starting point based on financial needs, time availability, and personal preferences.</p>
+                </div>
+            </div>
+            <div class="framework-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h4>Model Selection</h4>
+                    <p>Choose the business model that fits your situation: Consultant for quick cash, Creator for scale, or Hybrid for sustainability. Each path has different timelines and requirements.</p>
+                </div>
+            </div>
+            <div class="framework-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h4>Foundation Building</h4>
+                    <p>Set up business infrastructure: legal structure, branding, online presence, financial systems, and operational tools. Establish processes for managing multiple income streams.</p>
+                </div>
+            </div>
+            <div class="framework-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h4>First Stream Launch</h4>
+                    <p>Execute a focused launch of your first income stream. Apply proven frameworks for client acquisition or product development while maintaining realistic expectations.</p>
+                </div>
+            </div>
+            <div class="framework-step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h4>Portfolio Optimization</h4>
+                    <p>Systematically add complementary income streams. Leverage existing assets and audiences. Build toward the ideal 3-4 stream portfolio for long-term resilience.</p>
+                </div>
+            </div>
+            <div class="framework-step">
+                <div class="step-number">6</div>
+                <div class="step-content">
+                    <h4>Sustainable Growth</h4>
+                    <p>Establish rhythms for ongoing development, marketing, and client delivery. Create systems that allow income growth without proportional time investment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="light" id="pricing">
+        <h2>Investment Options</h2>
+        <p class="section-intro">
+            Flexible engagement models designed to fit different client needs and budget constraints.
+            All programs include access to our resource library and community.
+        </p>
+
+        <h3 style="margin-bottom: 1rem;">FractionalEdge Pricing</h3>
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Service Level</th>
+                    <th>Investment</th>
+                    <th>Duration</th>
+                    <th>Best For</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Launch Pad</strong></td>
+                    <td>$6,997</td>
+                    <td>8 weeks</td>
+                    <td>New fractional executives</td>
+                </tr>
+                <tr>
+                    <td><strong>Foundation Retainer</strong></td>
+                    <td>$997/month</td>
+                    <td>Ongoing</td>
+                    <td>Building momentum</td>
+                </tr>
+                <tr>
+                    <td><strong>Scale Up</strong></td>
+                    <td>$9,997</td>
+                    <td>12 weeks</td>
+                    <td>Established fractionals</td>
+                </tr>
+                <tr>
+                    <td><strong>Fractional Plus</strong></td>
+                    <td>$2,497/month</td>
+                    <td>Ongoing</td>
+                    <td>High-volume practitioners</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 style="margin: 3rem 0 1rem;">Portfolio Careers Pricing</h3>
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Pathway</th>
+                    <th>Investment</th>
+                    <th>Duration</th>
+                    <th>Best For</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Consultant Accelerator</strong></td>
+                    <td>$4,997</td>
+                    <td>30 days</td>
+                    <td>Fast consulting launch</td>
+                </tr>
+                <tr>
+                    <td><strong>Product Studio</strong></td>
+                    <td>$7,997</td>
+                    <td>3 months</td>
+                    <td>Digital product creation</td>
+                </tr>
+                <tr>
+                    <td><strong>Portfolio Mastery</strong></td>
+                    <td>$12,997</td>
+                    <td>6 months</td>
+                    <td>Complete transformation</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="card" style="margin-top: 3rem; background: var(--lighter-gray); border: none;">
+            <h3>Enterprise & Custom Solutions</h3>
+            <p>
+                For organizations looking to deploy these programs at scale—whether for outplacement,
+                executive development, or talent transition—we offer custom enterprise solutions.
+                <br><br>
+                <strong>Contact us</strong> for pricing on:
+            </p>
+            <ul style="margin-top: 1rem; padding-left: 1.2rem;">
+                <li>Internal coach certification programs</li>
+                <li>Multi-seat licensing agreements</li>
+                <li>Custom curriculum development</li>
+                <li>White-label service delivery</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="process">
+        <h2>Engagement Process</h2>
+        <p class="section-intro">
+            Our proven methodology ensures every client receives personalized guidance while
+            benefiting from our accumulated expertise across hundreds of successful practices.
+        </p>
+
+        <div class="process-flow">
+            <div class="process-step">
+                <div class="step-icon">1</div>
+                <h4>Discovery Call</h4>
+                <p>30-minute consultation to understand goals, background, and fit</p>
+            </div>
+            <div class="process-step">
+                <div class="step-icon">2</div>
+                <h4>Custom Proposal</h4>
+                <p>Tailored program recommendation with investment options</p>
+            </div>
+            <div class="process-step">
+                <div class="step-icon">3</div>
+                <h4>Onboarding</h4>
+                <p>Welcome kit, resource access, and kickoff session</p>
+            </div>
+            <div class="process-step">
+                <div class="step-icon">4</div>
+                <h4>Implementation</h4>
+                <p>Weekly engagement, coaching sessions, and milestone reviews</p>
+            </div>
+            <div class="process-step">
+                <div class="step-icon">5</div>
+                <h4>Scale & Support</h4>
+                <p>Ongoing access to community, resources, and continued growth</p>
+            </div>
+        </div>
+
+        <h3 style="margin-top: 4rem;">What Sets Us Apart</h3>
+        <div class="cards-grid">
+            <div class="card">
+                <h3>Proprietary Frameworks</h3>
+                <p>
+                    Every program is built on playbooks we've refined through years of
+                    working with successful fractional executives and portfolio careerists.
+                </p>
+            </div>
+            <div class="card">
+                <h3>Real-World Experience</h3>
+                <p>
+                    Our coaches have built and scaled their own fractional practices.
+                    We teach from lived experience, not theory.
+                </p>
+            </div>
+            <div class="card">
+                <h3>Proven Results</h3>
+                <p>
+                    Our methodology has helped launch dozens of successful practices.
+                    Many clients reach six-figure revenue within their first year.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="dark" id="contact">
+        <h2 style="color: white;">Ready to Get Started?</h2>
+        <p class="section-intro" style="color: #888;">
+            Let's discuss how we can help your clients transform their expertise into
+            sustainable, profitable businesses.
+        </p>
+
+        <div class="cards-grid">
+            <div class="card dark">
+                <h3 style="color: white;">Schedule a Consultation</h3>
+                <p style="color: #888;">
+                    Book a 30-minute discovery call to explore your needs and determine
+                    the best fit for your practice.
+                </p>
+                <p style="margin-top: 1rem;"><strong>No commitment required</strong></p>
+            </div>
+
+            <div class="card dark">
+                <h3 style="color: white;">Request Information</h3>
+                <p style="color: #888;">
+                    Get detailed program guides, pricing information, and client
+                    testimonials delivered to your inbox.
+                </p>
+                <p style="margin-top: 1rem;"><strong>Response within 24 hours</strong></p>
+            </div>
+
+            <div class="card dark">
+                <h3 style="color: white;">Partner With Us</h3>
+                <p style="color: #888;">
+                    Explore licensing opportunities or referral partnerships to
+                    extend these services to your clients.
+                </p>
+                <p style="margin-top: 1rem;"><strong>Enterprise inquiries welcome</strong></p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 4rem;">
+            <p style="font-size: 1.5rem; margin-bottom: 1rem;">hello@fractionaledge.com</p>
+            <p style="color: #888;">© 2025 FractionalEdge. All rights reserved.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>FractionalEdge & Portfolio Careers Service Offerings</p>
+        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Helping accomplished professionals build thriving practices</p>
+    </footer>
+</body>
+</html>

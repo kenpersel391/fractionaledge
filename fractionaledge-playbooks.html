@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FractionalEdge Playbooks - Product-Market Fit, Client Acquisition & Discovery</title>
+    <style>
+        :root {
+            --black: #000000;
+            --dark-gray: #1a1a1a;
+            --medium-gray: #333333;
+            --light-gray: #666666;
+            --lighter-gray: #f5f5f5;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--dark-gray);
+            background: var(--white);
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--black);
+            color: var(--white);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #888;
+        }
+
+        .hero {
+            background: var(--black);
+            color: var(--white);
+            padding: 6rem 2rem 3rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .hero .subtitle {
+            font-size: 1.1rem;
+            color: #888;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        section {
+            padding: 4rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        section.dark {
+            background: var(--black);
+            color: var(--white);
+            max-width: 100%;
+            padding-left: calc((100% - 1100px) / 2 + 2rem);
+            padding-right: calc((100% - 1100px) / 2 + 2rem);
+        }
+
+        section.light {
+            background: var(--lighter-gray);
+            max-width: 100%;
+            padding-left: calc((100% - 1100px) / 2 + 2rem);
+            padding-right: calc((100% - 1100px) / 2 + 2rem);
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .section-intro {
+            font-size: 1.1rem;
+            color: var(--light-gray);
+            margin-bottom: 2rem;
+        }
+
+        /* Pyramid Diagram */
+        .pyramid {
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .pyramid-level {
+            text-align: center;
+            padding: 1.5rem;
+            color: var(--white);
+            margin: 0 auto 0.3rem;
+            font-weight: 500;
+        }
+
+        .pyramid-level:nth-child(1) { background: #333; width: 100%; }
+        .pyramid-level:nth-child(2) { background: #444; width: 85%; }
+        .pyramid-level:nth-child(3) { background: #555; width: 70%; }
+        .pyramid-level:nth-child(4) { background: #666; width: 55%; }
+        .pyramid-level:nth-child(5) { background: #777; width: 40%; }
+
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 1.5rem;
+            border: 1px solid #eee;
+        }
+
+        .card.dark {
+            background: var(--dark-gray);
+            color: var(--white);
+            border-color: #444;
+        }
+
+        .card-number {
+            font-size: 2rem;
+            font-weight: 200;
+            color: #ddd;
+            margin-bottom: 0.5rem;
+        }
+
+        .card.dark .card-number {
+            color: #555;
+        }
+
+        /* Steps */
+        .steps {
+            counter-reset: step;
+        }
+
+        .step {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .step:last-child {
+            border-bottom: none;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--black);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        .step-content p {
+            color: var(--light-gray);
+            font-size: 0.95rem;
+        }
+
+        /* Framework Box */
+        .framework {
+            background: var(--lighter-gray);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .framework h4 {
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+
+        .framework ul {
+            padding-left: 1.2rem;
+        }
+
+        .framework li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Questionnaire */
+        .questionnaire {
+            background: var(--white);
+            border: 1px solid #eee;
+            padding: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .question-group {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .question-group:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .question-group h4 {
+            color: var(--black);
+            margin-bottom: 1rem;
+        }
+
+        .question {
+            padding: 1rem;
+            background: var(--lighter-gray);
+            margin-bottom: 0.5rem;
+            border-left: 3px solid var(--black);
+        }
+
+        .question-label {
+            font-weight: 500;
+            color: var(--medium-gray);
+        }
+
+        /* Messaging Templates */
+        .template {
+            background: var(--white);
+            border: 1px solid #ddd;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            font-family: monospace;
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+        }
+
+        .template-label {
+            font-size: 0.8rem;
+            color: var(--light-gray);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--black);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            background: var(--white);
+            border: 3px solid var(--black);
+            border-radius: 50%;
+        }
+
+        .timeline-item h4 {
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-item p {
+            color: var(--light-gray);
+            font-size: 0.95rem;
+        }
+
+        /* Matrix */
+        .matrix {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        .matrix th,
+        .matrix td {
+            padding: 1rem;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        .matrix th {
+            background: var(--black);
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        .matrix tr:nth-child(even) {
+            background: var(--lighter-gray);
+        }
+
+        /* Checklist */
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+
+        .checklist li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .checklist li::before {
+            content: '☐';
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        /* Call Flow */
+        .call-flow {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .call-block {
+            background: var(--lighter-gray);
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .call-block .time {
+            font-size: 0.85rem;
+            color: var(--light-gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .call-block .action {
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            color: #888;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .pyramid-level {
+                font-size: 0.9rem;
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">FractionalEdge Playbooks</div>
+        <ul>
+            <li><a href="#pmf">Product-Market Fit</a></li>
+            <li><a href="#acquisition">Client Acquisition</a></li>
+            <li><a href="#discovery">Discovery Process</a></li>
+            <li><a href="#templates">Templates</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <h1>Practical Playbooks for Your Practice</h1>
+        <p class="subtitle">
+            Three essential frameworks to help your clients achieve product-market fit,
+            acquire ideal clients, and structure effective discovery conversations.
+        </p>
+    </section>
+
+    <section id="pmf">
+        <h2>Playbook 1: Product-Market Fit Framework</h2>
+        <p class="section-intro">
+            The biggest challenge for experienced professionals is translating "what they're good at"
+            into an offering that markets itself. This framework helps identify the intersection
+            of client pain, market demand, and your expertise.
+        </p>
+
+        <div class="pyramid">
+            <div class="pyramid-level">Target Customer<br><small style="color:#aaa">Who has the problem?</small></div>
+            <div class="pyramid-level">Underserved Needs<br><small style="color:#aaa">What keeps them awake at night?</small></div>
+            <div class="pyramid-level">Value Proposition<br><small style="color:#aaa">How do you solve it uniquely?</small></div>
+            <div class="pyramid-level">Service Feature Set<br><small style="color:#aaa">What exactly do you deliver?</small></div>
+            <div class="pyramid-level">Client Experience<br><small style="color:#aaa">How does the engagement feel?</small></div>
+        </div>
+
+        <h3 style="margin-top: 2rem;">The 5-Question Fit Test</h3>
+        <p>Run every potential service offering through this test:</p>
+
+        <div class="framework">
+            <h4>Fit Question 1: Who specifically has this problem?</h4>
+            <p style="color: #666; margin-bottom: 1rem;"><em>Bad answer:</em> "Companies that need help with finance."</p>
+            <p style="color: #666; margin-bottom: 1rem;"><em>Good answer:</em> "Series A-B SaaS founders who just raised their first significant round and need to build a financial foundation without hiring a full-time CFO."</p>
+            <p><strong>Key indicators:</strong> Industry + Stage + Role + Problem = Very specific description</p>
+        </div>
+
+        <div class="framework">
+            <h4>Fit Question 2: How urgent is the problem?</h4>
+            <ul>
+                <li><strong>High urgency:</strong> They're losing money, missing deadlines, facing a deadline</li>
+                <li><strong>Medium urgency:</strong> They're inefficient, frustrated, know they should act</li>
+                <li><strong>Low urgency:</strong> "Nice to have" - these are slow sales, price-sensitive</li>
+            </ul>
+        </div>
+
+        <div class="framework">
+            <h4>Fit Question 3: What's their alternative today?</h4>
+            <p style="margin-bottom: 1rem;">Understanding alternatives reveals your real competition:</p>
+            <ul>
+                <li>Do nothing (most common)</li>
+                <li>Hire full-time (expensive, may not fit)</li>
+                <li>Use existing staff (overwhelmed, unqualified)</li>
+                <li>Cheap freelancer (quality issues)</li>
+                <li>Competitor firm (you need differentiation)</li>
+            </ul>
+        </div>
+
+        <div class="framework">
+            <h4>Fit Question 4: Can they articulate the problem clearly?</h4>
+            <p>If prospects can name the problem and its cost, they're further along in their journey. Look for:</p>
+            <ul>
+                <li>They use specific terminology</li>
+                <li>They know what they want the outcome to look like</li>
+                <li>They can describe the cost of inaction</li>
+            </ul>
+        </div>
+
+        <div class="framework">
+            <h4>Fit Question 5: What's the ROI reality?</h4>
+            <p>Calculate the value-to-price ratio:</p>
+            <ul>
+                <li><strong>Clear ROI:</strong> "Spend $5K, save/make $50K" - easy sell</li>
+                <li><strong>Soft ROI:</strong> "Spend $5K, feel more confident" - harder sell</li>
+                <li><strong>Risk reversal needed:</strong> Offer pilots, guarantees</li>
+            </ul>
+        </div>
+
+        <h3>The 30-Second Fit Statement</h3>
+        <p>Use this formula to quickly test and communicate product-market fit:</p>
+
+        <div class="template">
+<strong>Formula:</strong> "I help [specific client] achieve [specific outcome] by [your method], even when [common objection/alternative]."
+
+<strong>Example:</strong> "I help Series A SaaS CFOs close their books 3x faster by implementing automated financial processes, even when they think they're too small for that kind of infrastructure."
+        </div>
+
+        <h3 style="margin-top: 2rem;">Product-Market Fit Scoring Matrix</h3>
+        <table class="matrix">
+            <thead>
+                <tr>
+                    <th>Criteria</th>
+                    <th>1 (Weak)</th>
+                    <th>3 (Moderate)</th>
+                    <th>5 (Strong)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Target Specificity</strong></td>
+                    <td>General market</td>
+                    <td>Niche identified</td>
+                    <td>Very specific ICP</td>
+                </tr>
+                <tr>
+                    <td><strong>Pain Clarity</strong></td>
+                    <td>Vague dissatisfaction</td>
+                    <td>Named problem</td>
+                    <td>Quantified pain</td>
+                </tr>
+                <tr>
+                    <td><strong>Urgency Level</strong></td>
+                    <td>Low urgency</td>
+                    <td>Medium urgency</td>
+                    <td>High urgency</td>
+                </tr>
+                <tr>
+                    <td><strong>Alternative Fit</strong></td>
+                    <td>Alternatives work</td>
+                    <td>Partial solutions</td>
+                    <td>Poor alternatives</td>
+                </tr>
+                <tr>
+                    <td><strong>Value Clarity</strong></td>
+                    <td>Hard to articulate ROI</td>
+                    <td>General ROI</td>
+                    <td>Specific ROI</td>
+                </tr>
+                <tr>
+                    <td><strong>Your Expertise Match</strong></td>
+                    <td>General skills</td>
+                    <td>Strong experience</td>
+                    <td>Deep specialization</td>
+                </tr>
+            </tbody>
+        </table>
+        <p><strong>Score:</strong> 25-30 = Strong fit, launch now | 18-24 = Good fit, refine | Below 18 = Revisit or abandon</p>
+    </section>
+
+    <section class="dark" id="acquisition">
+        <h2 style="color: white;">Playbook 2: Client Acquisition System</h2>
+        <p class="section-intro" style="color: #888;">
+            The #1 mistake fractional executives make: jumping straight to tactics (networking events,
+            LinkedIn outreach) without building a foundation. This playbook creates a systematic,
+            predictable client acquisition engine.
+        </p>
+
+        <h3 style="color: white;">The Three-Channel Acquisition Model</h3>
+        <div class="cards-grid">
+            <div class="card dark">
+                <div class="card-number">01</div>
+                <h3 style="color: white;">Inbound</h3>
+                <p style="color: #aaa;">
+                    Prospects find you through content, search, or referrals. Lower effort per lead,
+                    but requires consistent content creation and takes time to build momentum.
+                </p>
+                <ul style="margin-top: 1rem; padding-left: 1.2rem; color: #888; font-size: 0.9rem;">
+                    <li>LinkedIn thought leadership</li>
+                    <li>Blog posts answering FAQs</li>
+                    <li>Speaking at events</li>
+                    <li>Referral partnerships</li>
+                </ul>
+            </div>
+            <div class="card dark">
+                <div class="card-number">02</div>
+                <h3 style="color: white;">Warm Outbound</h3>
+                <p style="color: #aaa;">
+                    You reach out to prospects where you have a connection or introduction.
+                    Higher response rates than cold outreach, requires relationship building first.
+                </p>
+                <ul style="margin-top: 1rem; padding-left: 1.2rem; color: #888; font-size: 0.9rem;">
+                    <li>Reconnect with former colleagues</li>
+                    <li>Ask for introductions from warm network</li>
+                    <li>Engage with content prospects read</li>
+                    <li>Strategic partnership referrals</li>
+                </ul>
+            </div>
+            <div class="card dark">
+                <div class="card-number">03</div>
+                <h3 style="color: white;">Pilot Projects</h3>
+                <p style="color: #aaa;">
+                    Low-risk first engagements that prove value. Turns prospects into clients
+                    and clients into references. The easiest sale because risk is minimized.
+                </p>
+                <ul style="margin-top: 1rem; padding-left: 1.2rem; color: #888; font-size: 0.9rem;">
+                    <li>Diagnostic assessments</li>
+                    <li>Focused project scopes</li>
+                    <li>30-60 day pilots</li>
+                    <li>Quick wins with defined outcomes</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3 style="color: white; margin-top: 3rem;">12-Week Acquisition Sprint</h3>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h4>Weeks 1-2: Foundation</h4>
+                <p>Define your ICP precisely. Rewrite LinkedIn headline and summary. Create one-line value proposition. Update website to reflect niche positioning.</p>
+            </div>
+            <div class="timeline-item">
+                <h4>Weeks 3-4: Content System</h4>
+                <p>Choose 2 content channels maximum (LinkedIn + one other). Plan 4 weeks of problem-focused content. Start publishing consistently. Focus on problems, not you.</p>
+            </div>
+            <div class="timeline-item">
+                <h4>Weeks 5-6: Warm Network Outreach</h4>
+                <p>Reach out to 5-10 former colleagues per week. Send value-first messages, not sales pitches. Ask for intros to their network. Track every conversation.</p>
+            </div>
+            <div class="timeline-item">
+                <h4>Weeks 7-8: Funnel Development</h4>
+                <p>Design your diagnostic offering. Create simple landing page. Write automated follow-up sequences. Test your sales process with 3-5 prospects.</p>
+            </div>
+            <div class="timeline-item">
+                <h4>Weeks 9-10: Pilot Launch</h4>
+                <p>Offer first pilot project to warm leads. Deliver exceptional value. Document results. Ask for testimonials and referrals immediately.</p>
+            </div>
+            <div class="timeline-item">
+                <h4>Weeks 11-12: Refine & Scale</h4>
+                <p>Analyze what's working. Double down on winning channels. Refine messaging based on feedback. Build pipeline for next quarter.</p>
+            </div>
+        </div>
+
+        <h3 style="color: white; margin-top: 2rem;">Ideal Client Profile Canvas</h3>
+        <table class="matrix" style="background: white;">
+            <tbody>
+                <tr>
+                    <td><strong>Firmographics</strong></td>
+                    <td colspan="3">
+                        Industry: ___________________<br>
+                        Revenue: ___________________<br>
+                        Employees: ___________________<br>
+                        Location: ___________________
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Demographics</strong></td>
+                    <td colspan="3">
+                        Role: ___________________<br>
+                        Tenure in role: ___________________<br>
+                        Reporting to: ___________________<br>
+                        Decision-making authority: ___________________
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Psychographics</strong></td>
+                    <td colspan="3">
+                        Primary pain points: ___________________<br>
+                        What success looks like: ___________________<br>
+                        Risk tolerance: ___________________<br>
+                        Decision-making style: ___________________
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Trigger Events</strong></td>
+                    <td colspan="3">
+                        Recent funding: ___________________<br>
+                        New leadership: ___________________<br>
+                        Growth phase: ___________________<br>
+                        Recent challenges: ___________________
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 style="color: white; margin-top: 2rem;">Outreach Cadence Template</h3>
+        <p style="color: #888;">Multi-touch sequence for warm prospects (LinkedIn + Email):</p>
+
+        <div class="template" style="background: #f9f9f9; color: #333;">
+<strong>Day 1 - LinkedIn Connection Request:</strong>
+"[Name], I've been following your work at [Company] and would love to connect. I help [ICP] achieve [outcome] and I'd value the opportunity to learn more about what you're building."
+
+<strong>Day 3 - LinkedIn Message (after connection accepted):</strong>
+"Thanks for connecting, [Name]. Quick question - how are you handling [specific challenge ICP faces] at [Company]? I just wrote about this and would value your perspective."
+
+<strong>Day 5 - Email (to same person):</strong>
+Subject: Quick question about [Company]'s [specific initiative]
+
+Hi [Name],
+
+I came across [recent news about Company] and was impressed by [specific detail].
+
+I'm curious: how are you approaching [specific challenge] these days? My team has been helping [similar companies] solve this by [approach], and I'm always learning from leaders in the space.
+
+Would you have 15 minutes for a brief call? No agenda - just a chance to share a few ideas that might be helpful.
+
+Best,
+[Your name]
+
+<strong>Day 10 - Follow-up Email (if no response):</strong>
+Subject: Following up - quick question about [Company]
+
+Hi [Name],
+
+Just circling back on this. I know [recent event/initiative] is keeping you busy.
+
+If it makes sense, I'd love to share one quick idea that's helped [similar companies] achieve [specific outcome]. Even if now isn't the right time, it might spark something useful.
+
+No pressure at all to reply.
+
+Best,
+[Your name]
+
+<strong>Day 18 - Final Touch (optional):</strong>
+Subject: One last thought for you, [Name]
+
+Hi [Name],
+
+I'll stop reaching out after this - I promise! But I wanted to share one resource that might help with [specific challenge].
+
+[Link to relevant content piece]
+
+If it resonates, great. If not, I hope [Company]'s [goal] goes exceptionally well this quarter.
+
+Best,
+[Your name]
+        </div>
+    </section>
+
+    <section id="discovery">
+        <h2>Playbook 3: Discovery Process & Questionnaire</h2>
+        <p class="section-intro">
+            The discovery process determines whether both parties are a good fit.
+            The goal is to understand deeply, position appropriately, and set up a clear next step.
+        </p>
+
+        <h3>The 5-Phase Discovery Framework</h3>
+        <div class="call-flow">
+            <div class="call-block">
+                <div class="time">0-2 min</div>
+                <div class="action">Open & Set Agenda</div>
+                <p style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">Build rapport, confirm purpose</p>
+            </div>
+            <div class="call-block">
+                <div class="time">2-12 min</div>
+                <div class="action">Situation Assessment</div>
+                <p style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">Understand their world</p>
+            </div>
+            <div class="call-block">
+                <div class="time">12-25 min</div>
+                <div class="action">Pain Discovery</div>
+                <p style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">Uncover real challenges</p>
+            </div>
+            <div class="call-block">
+                <div class="time">25-28 min</div>
+                <div class="action">Qualify & Position</div>
+                <p style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">Is fit + value clear?</p>
+            </div>
+            <div class="call-block">
+                <div class="time">28-30 min</div>
+                <div class="action">Next Steps</div>
+                <p style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">Clear call to action</p>
+            </div>
+        </div>
+
+        <h3>Discovery Questionnaire</h3>
+        <div class="questionnaire">
+            <div class="question-group">
+                <h4>Section 1: Opening & Rapport (2 min)</h4>
+                <div class="question">
+                    <p class="question-label">"Before we dive in, can you share a bit about your background and how you ended up at [Company]?"</p>
+                </div>
+                <div class="question">
+                    <p class="question-label">"What's on your agenda for this conversation? What would make this a great use of our time together?"</p>
+                </div>
+            </div>
+
+            <div class="question-group">
+                <h4>Section 2: Situation Assessment (10 min)</h4>
+                <div class="question">
+                    <p class="question-label">"Tell me about [Company] - where are you in your journey, and what's the current state of [relevant department/function]?"</p>
+                </div>
+                <div class="question">
+                    <p class="question-label">"What does a typical day or week look like for you right now? Where does your time go?"</p>
+                </div>
+                <div class="question">
+                    <p class="question-label">"Who else is involved in [area of concern], and how do decisions typically get made?"</p>
+                </div>
+            </div>
+
+            <div class="question-group">
+                <h4>Section 3: Pain Discovery (13 min)</h4>
+                <div class="question">
+                    <p class="question-label">"What prompted you to explore solutions like this now? What changed?"</p>
+                </div>
+                <div class="question">
+                    <p class="question-label">"On a scale of 1-10, how would you rate how [specific area] is working today? What would get you to a 9 or 10?"</p>
+                </div>
+                <div class="question">
+                    <p class="question-label">"What's the cost of this challenge - not just financially, but in terms of time, stress, or missed opportunities?"</p>
+                </div>
+                <div class="question">
+                    <p class="question-label">"What have you tried before to address this? What worked, and what fell short?"</p>
+                </div>
+                <div class="question">
+                    <p class="question-label">"What does success look like for this initiative? What specific outcomes are you hoping for?"</p>
+                </div>
+            </div>
+
+            <div class="question-group">
+                <h4>Section 4: Qualification (3 min)</h4>
+                <div class="question">
+                    <p class="question-label">"Do you have a budget range in mind for this, and what's the timeline you're working toward?"</p>
+                </div>
+                <div class="question">
+                    <p class="question-label">"Who else would need to be convinced for this to move forward?"</p>
+                </div>
+            </div>
+
+            <div class="question-group">
+                <h4>Section 5: Position & Next Steps (2 min)</h4>
+                <p style="margin-bottom: 1rem; color: #666;">After gathering this information, summarize what you heard and position your value:</p>
+                <div class="question">
+                    <p class="question-label">"What I'm hearing is [summarize key points]. Based on what you've shared, I believe we could help by [specific approach]. Here's what I'd suggest as next steps..."</p>
+                </div>
+            </div>
+        </div>
+
+        <h3>Discovery Scoring: Is This a Good Fit?</h3>
+        <div class="framework">
+            <h4>Red Flags (Caution)</h4>
+            <ul>
+                <li>No clear pain - just "exploring"</li>
+                <li>Budget significantly below market rate</li>
+                <li>Too many stakeholders with competing agendas</li>
+                <li>Timeline doesn't align with solution delivery</li>
+                <li>Previous bad experiences with similar help</li>
+                <li>Culture clash or value misalignment</li>
+            </ul>
+        </div>
+
+        <div class="framework">
+            <h4>Green Lights (Strong Fit)</h4>
+            <ul>
+                <li>Clear, urgent pain they can articulate</li>
+                <li>Budget is reasonable and allocated</li>
+                <li>Single decision-maker or aligned team</li>
+                <li>Timeline allows for proper execution</li>
+                <li>History of investing in help</li>
+                <li>Culture and values alignment</li>
+            </ul>
+        </div>
+
+        <h3>Post-Discovery Follow-Up Template</h3>
+        <div class="template">
+<strong>Subject:</strong> Great speaking today, [Name] - next steps
+
+Hi [Name],
+
+Thank you for the conversation today. I really enjoyed learning about [Company] and [specific initiative].
+
+As we discussed, here's what I'm going to do:
+[Action 1 - e.g., send proposal]
+[Action 2 - e.g., schedule follow-up call]
+
+And here's what I heard from you as priorities:
+1. [Priority 1]
+2. [Priority 2]
+3. [Priority 3]
+
+Please let me know if I missed anything or if anything changes on your end.
+
+Looking forward to [next step].
+
+Best,
+[Your name]
+
+P.S. Here's that [resource/article/idea] I mentioned - [link]
+        </div>
+    </section>
+
+    <section class="light" id="templates">
+        <h2>Quick Reference: Key Templates & Checklists</h2>
+
+        <h3>Value Proposition Template</h3>
+        <div class="template">
+<strong>For [Target Client] who want [Desired Outcome],
+I provide [Your Solution] that delivers [Key Benefit],
+unlike [Alternative] which [Limitation of alternative].
+        </div>
+
+        <h3>LinkedIn Profile Optimization Checklist</h3>
+        <ul class="checklist">
+            <li>Headline clearly states WHO you help and WHAT outcome you deliver</li>
+            <li>About section tells a story of transformation, not a resume</li>
+            <li>Featured section includes content or case studies</li>
+            <li>Experience section highlights achievements, not just responsibilities</li>
+            <li>Recommendations from clients or colleagues</li>
+        </ul>
+
+        <h3>Content Pillar Framework</h3>
+        <table class="matrix">
+            <thead>
+                <tr>
+                    <th>Content Type</th>
+                    <th>Purpose</th>
+                    <th>Frequency</th>
+                    <th>Example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Problem Recognition</strong></td>
+                    <td>Help prospects realize they have a problem</td>
+                    <td>Weekly</td>
+                    <td>"3 Signs Your Finance Function Is Stalling Growth"</td>
+                </tr>
+                <tr>
+                    <td><strong>Solution Framework</strong></td>
+                    <td>Share your methodology (not implementation)</td>
+                    <td>Bi-weekly</td>
+                    <td>"The 4-Step Framework I Use With Every New CFO Client"</td>
+                </tr>
+                <tr>
+                    <td><strong>Reality Check</strong></td>
+                    <td>Show why they need help executing</td>
+                    <td>Weekly</td>
+                    <td>"Why Most Companies Fail at Implementing Financial Processes"</td>
+                </tr>
+                <tr>
+                    <td><strong>Social Proof</strong></td>
+                    <td>Build credibility without bragging</td>
+                    <td>Monthly</td>
+                    <td>"How One Startup Cut Their Close Time by 60%"</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Pilot Project Offer Framework</h3>
+        <div class="template">
+<strong>Name:</strong> [Specific Name] Assessment
+
+<strong>Duration:</strong> 2-4 weeks
+
+<strong>Scope:</strong>
+- [Deliverable 1]
+- [Deliverable 2]
+- [Deliverable 3]
+
+<strong>Investment:</strong> $[X,XXX] fixed fee
+
+<strong>Outcomes:</strong>
+By the end of this engagement, you'll have:
+1. [Specific deliverable with business impact]
+2. [Specific deliverable with business impact]
+3. [Clear path forward recommendation]
+
+<strong>Next step:</strong> If we both see fit, we'll discuss how to proceed with a [full engagement scope].
+        </div>
+    </section>
+
+    <footer>
+        <p><strong>FractionalEdge Playbooks</strong></p>
+        <p>Three essential frameworks for building a thriving fractional practice</p>
+        <p style="color: #666; margin-top: 1rem;">engage@perselgroup.com</p>
+    </footer>
+</body>
+</html>
